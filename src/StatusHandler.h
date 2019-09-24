@@ -23,8 +23,13 @@ public:
 	void mode(const StatusHandler::LightMode mode);
 	StatusHandler::LightMode mode() const;
 
+	void forceManual(const int time);
+	int remainingTimeInForcedMode() const;
+	void decreaseRemainingTimeInForcedMode();
+	
 private:
 	StatusHandler::LightMode _mode;
 	int _currentValue;
 	ParameterProvider & _paramsProvider;
+	int _remainingTimeInForcedMode;
 };

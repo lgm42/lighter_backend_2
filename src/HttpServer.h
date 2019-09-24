@@ -33,7 +33,7 @@ private:
 	WiFiUDP _ntpUDP;
 	ParameterProvider & _paramProvider;
   ESP8266HTTPUpdateServer _httpUpdater;
-	StatusHandler _statusHandler;
+	StatusHandler & _statusHandler;
 
 	void updateNTP();
 	bool handleFileRead(String path);

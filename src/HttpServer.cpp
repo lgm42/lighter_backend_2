@@ -6,6 +6,7 @@
 
 #include "ParameterProvider.h"
 #include "StatusHandler.h"
+#include "Constants.h"
 
 #include "HttpServer.h"
 
@@ -64,8 +65,6 @@ HttpServer::~HttpServer()
 
 void HttpServer::setup(void)
 {
-	_paramProvider.load();
-	
 	MDNS.begin(_paramProvider.params().hostname.c_str()); 
 	MDNS.addService("http", "tcp", 80);
 
@@ -128,7 +127,7 @@ void HttpServer::setup(void)
 		else if (value == "forcedManual")
 		{
 			Serial.println("going to forced manual mode");
-			_statusHandler.mode(StatusHandler::kForcedManual);
+			_statusHandler.forceManual(Constants::ManualModeTimeWhenButtonPressed);
 			sendOk();
 		}
 		else
